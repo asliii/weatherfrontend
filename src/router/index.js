@@ -13,9 +13,9 @@ export default new Router({
             component: () => import('../components/Login.vue')
         },
         {
-            path: '/dashboard',
-            name: 'dashboard',
-            component: () => import('../components/Dashboard.vue')
+            path: '/weather',
+            name: 'weather',
+            component: () => import('../components/Weather.vue')
         }
     ]
 })

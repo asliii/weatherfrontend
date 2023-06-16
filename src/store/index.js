@@ -3,18 +3,18 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
     user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
-    authenticated: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user'))['authenticated'] : false
+    is_login: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user'))['authenticated'] : false
   };
   
   const mutations = {
     login (state, user) {
       state.user = user;
-      state.authenticated = true;
+      state.is_login = true;
       localStorage.setItem('user', JSON.stringify(state));
     },
     logout (state) {
       state.user = null;
-      state.authenticated = false;
+      state.is_login = false;
       localStorage.removeItem('user')
     }
   };
@@ -23,8 +23,8 @@ const state = {
     user () {
         return state.user
     },
-    login () {
-      return state.authenticated
+    is_login () {
+      return state.is_login
     }
   };
   

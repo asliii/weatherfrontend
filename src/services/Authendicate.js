@@ -13,14 +13,13 @@ export default {
       //console.log(login_url)
       axios.post(url + 'token/', {username, password}).then(response => {
         if (response.data) {
-          axios.post(url + 'weatherApp/user/user_detail', {}, { headers: {
-            'Authorization': `JWT ${response.data.access}`
-          }}
-      ).then(res => {
+          axios.post(url + 'weatherApp/user/user_detail/', {}, { headers: {
+            'Authorization': `Bearer ${response.data.access}`
+          }}).then(res => {
               console.log('user', res.data);
               store.commit('login', res.data)
               setTimeout(() => {
-                router.push({ name: 'dashboard'})
+                router.push({ name: 'weather'})
               }, 50);
             })
         } else {
