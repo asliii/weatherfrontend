@@ -5,18 +5,17 @@
 </template>
 
 <script>
+// import store from './store';
 import { mapGetters } from 'vuex';
-
 export default {
   name: 'App',
-
-  components: {
+  data() {
+    return {
+    }
   },
-
-  watched: () => ({
-    ...mapGetters(['is_login']),
-  }),
+  computed: mapGetters(['is_login']),
   mounted() {
+    //this.is_login = store.getters['is_login']
     if (!this.is_login) {
       this.$router.push({ name: 'login' })
     } else {

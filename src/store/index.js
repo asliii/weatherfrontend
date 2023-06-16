@@ -3,19 +3,23 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
     user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
-    is_login: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user'))['authenticated'] : false
+    is_login: localStorage.getItem('user') ? true : false,
+    last_selected_weather: null
   };
   
   const mutations = {
     login (state, user) {
+      console.log(state)
       state.user = user;
-      state.is_login = true;
-      localStorage.setItem('user', JSON.stringify(state));
+      localStorage.setItem('user', JSON.stringify(state.user));
     },
     logout (state) {
       state.user = null;
-      state.is_login = false;
       localStorage.removeItem('user')
+    },
+    set_weather (state, weather) {
+      console.log(weather)
+      state.last_selected_weather = weather
     }
   };
   
@@ -25,6 +29,10 @@ const state = {
     },
     is_login () {
       return state.is_login
+    },
+    weather_detail () {
+      console.log('sfsdfsdf', state.last_selected_weather)
+      return state.last_selected_weather
     }
   };
   

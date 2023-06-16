@@ -1,49 +1,76 @@
 <template>
+<v-app id="inspire">
    <v-container fluid>
     <v-row align="center">
-      <v-col cols="6">
+      <v-col>
         <v-subheader>
           Custom items
         </v-subheader>
       </v-col>
 
-      <v-col cols="6">
-        <v-select
-          v-model="select"
-          :hint="`${select.state}, ${select.abbr}`"
+      <v-col>
+       <v-select
+        v-model='select'
           :items="items"
-          item-text="state"
-          item-value="abbr"
-          label="Select"
-          persistent-hint
-          return-object
-          single-line
+          label="Standard"
+          v-on:change='getWeatherInfo'
         ></v-select>
       </v-col>
+      <v-col>
+       <v-btn
+          color="secondary"
+          elevation="2"
+          small
+          v-on:click='$router.push({ name: "weather_detail_page" })'
+        >3 Details</v-btn>
+        <v-btn
+          color="secondary"
+          elevation="2"
+          small
+          v-on:click='$router.push({ name: "weather_detail_page" })'
+        >5 Details</v-btn>
+      </v-col>
+    </v-row>
+    <v-row>
+       <v-list dense>
+      <div class="text-h5">{{ select }} Current</div>
+      <v-list-item-group
+        color="primary"
+      >
+        <v-list-item
+          v-for="(item, i) in weather_detail.data.current_condition[0]"
+          :key="i"
+        >
+          <v-list-item-content>
+            <v-list-item-title v-text="i+ ': '"></v-list-item-title>
+          </v-list-item-content>
+          <v-list-item-content>
+            <v-list-item-title v-text="item"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
     </v-row>
   </v-container>
+  </v-app>
 </template>
 <script>
-
+   import Weather from '../services/Weather'
+   import { mapGetters } from 'vuex';
   export default {
     name: 'WeatherComp',
     data: () => ({
-        select: { state: 'Florida', abbr: 'FL' },
-        items: [
-          { state: 'Florida', abbr: 'FL' },
-          { state: 'Georgia', abbr: 'GA' },
-          { state: 'Nebraska', abbr: 'NE' },
-          { state: 'California', abbr: 'CA' },
-          { state: 'New York', abbr: 'NY' },
-        ],
+        select: 'Florida',
+        items: ['Florida', 'Georgia', 'Nebraska', 'California'],
     }),
     methods: {
-      getNow() {
-        
+      getWeatherInfo () {
+        Weather.getWeatherInfo(this.select, 5)
       }
     },
     mounted() {
-
-    }
+      Weather.getWeatherInfo(this.select, 5)
+    },
+    computed: mapGetters(['weather_detail'])
   }
 </script>
