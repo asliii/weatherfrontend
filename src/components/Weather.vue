@@ -5,7 +5,7 @@
     <v-row align="center">
       <v-col>
         <v-subheader>
-          Custom items
+          Cities
         </v-subheader>
       </v-col>
 
