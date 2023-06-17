@@ -22,13 +22,6 @@
 import { mapGetters } from 'vuex';
 export default {
   name: 'BarComp',
-  data() {
-    return {
-    }
-  },
   computed: mapGetters(['user']),
-  mounted() {
-    
-  },
 };
 </script>

@@ -13,7 +13,6 @@ export default {
           axios.post(BACKEND_URL + 'weatherApp/user/user_detail/', {}, { headers: {
             'Authorization': `Bearer ${response.data.access}`
           }}).then(res => {
-              console.log('user', res.data);
               store.commit('login', res.data)
               setTimeout(() => {
                 router.push({ name: 'weather'})

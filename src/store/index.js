@@ -9,12 +9,10 @@ const state = {
   
   const mutations = {
     login (state, user) {
-      console.log(state)
       state.user = user;
       localStorage.setItem('user', JSON.stringify(state.user));
     },
     set_weather (state, weather) {
-      console.log(weather)
       state.last_selected_weather = weather
     },
     logout (state) {

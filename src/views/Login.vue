@@ -1,6 +1,6 @@
 <template>
   <v-form v-model="valid">
-    <v-container>
+    <v-container class="d-flex justify-center">
       <v-row>
         <v-col
           cols="12"
@@ -28,6 +28,7 @@
         </v-col>
         <v-col>
           <v-btn
+            class="login-btn"
               color="primary"
               small @click="login" :disabled="!valid"
               >Login</v-btn>
@@ -65,3 +66,11 @@
     }
   }
 </script>
+
+<style>
+.login-btn {
+  background-color: blue !important;
+  color: white !important;
+  margin-top: 15px;
+}
+</style>

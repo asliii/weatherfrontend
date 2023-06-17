@@ -156,7 +156,7 @@
 <script>
    import Weather from '../services/Weather'
    import { mapGetters } from 'vuex';
-   import BarComp from './Bar';
+   import BarComp from '../components/Bar';
   export default {
     name: 'WeatherComp',
     data: () => ({

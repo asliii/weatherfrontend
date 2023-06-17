@@ -10,12 +10,12 @@ export default new Router({
         {
             path: '/login',
             name: 'login',
-            component: () => import('../components/Login.vue')
+            component: () => import('../views/Login.vue')
         },
         {
             path: '/weather',
             name: 'weather',
-            component: () => import('../components/Weather.vue')
+            component: () => import('../views/Weather.vue')
         }
     ]
 })
