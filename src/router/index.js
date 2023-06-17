@@ -16,11 +16,6 @@ export default new Router({
             path: '/weather',
             name: 'weather',
             component: () => import('../components/Weather.vue')
-        },
-        {
-            path: '/weather_detail_page',
-            name: 'weather_detail_page',
-            component: () => import('../components/WeatherDetail.vue')
         }
     ]
 })

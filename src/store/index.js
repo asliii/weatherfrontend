@@ -13,13 +13,13 @@ const state = {
       state.user = user;
       localStorage.setItem('user', JSON.stringify(state.user));
     },
-    logout (state) {
-      state.user = null;
-      localStorage.removeItem('user')
-    },
     set_weather (state, weather) {
       console.log(weather)
       state.last_selected_weather = weather
+    },
+    logout (state) {
+      state.user = null;
+      localStorage.removeItem('user')
     }
   };
   
@@ -31,7 +31,6 @@ const state = {
       return state.is_login
     },
     weather_detail () {
-      console.log('sfsdfsdf', state.last_selected_weather)
       return state.last_selected_weather
     }
   };
