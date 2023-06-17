@@ -33,12 +33,11 @@
         >5 Days</v-btn>
       </v-col>
     </v-row>
-    <v-row v-if="current">
+    <div v-if="current">
+    <v-row class="d-flex justify-center">
        <v-list dense>
       <div class="text-h5">{{ select }} Current</div>
-      <v-list-item-group
-        color="primary"
-      >
+      <v-list-item-group color="primary">
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
@@ -49,46 +48,51 @@
             <v-list-item-title v-text="current.weatherDesc[0].value"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>FeelsLikeC: </v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-content>
-            <v-list-item-title v-text="current.FeelsLikeC"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Humidity: </v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-content>
-            <v-list-item-title v-text="current.humidity"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Temperature C: </v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-content>
-            <v-list-item-title v-text="current.temp_C"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Temperature F: </v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-content>
-            <v-list-item-title v-text="current.temp_F"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
       </v-list-item-group>
     </v-list>
-     <v-btn
+    </v-row>
+      <v-row class="d-flex justify-center">
+      <v-simple-table>
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <th class="text-left">
+                        FeelsLikeC
+                      </th>
+                      <th class="text-left">
+                        FeelsLikeF
+                      </th>
+                      <th class="text-left">
+                        Humidity
+                      </th>
+                      <th class="text-left">
+                        Temp C
+                      </th>
+                      <th class="text-left">
+                        Temp F
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{ current.FeelsLikeC }}</td>
+                      <td>{{ current.FeelsLikeF }}</td>
+                      <td>{{ current.humidity }}</td>
+                      <td>{{ current.temp_C }}</td>
+                      <td>{{ current.temp_F }}</td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+      </v-row>
+     <v-row class="d-flex justify-center">
+      <v-btn
           color="primary"
           v-on:click="detail=true"
         >
           {{ day }} Days Details
         </v-btn>
+     </v-row>
       <div class="text-center">
         <v-dialog
           v-model="detail"
@@ -145,7 +149,7 @@
           </v-card>
         </v-dialog>
       </div>
-    </v-row>
+    </div>
   </v-container>
   </v-app>
 </template>

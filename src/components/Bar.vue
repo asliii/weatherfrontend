@@ -7,7 +7,7 @@
     >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Merhaba {{ user.first_name }} {{ user.last_name }} </v-toolbar-title>
+      <v-toolbar-title>Merhaba {{ user.first_name }} {{ user.last_name }} ({{ user.username }})</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
